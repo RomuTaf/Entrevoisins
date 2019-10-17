@@ -31,6 +31,7 @@ public class MyNeighbourRecyclerViewAdapter extends RecyclerView.Adapter<MyNeigh
     private final List<Neighbour> mNeighbours;
     //creer le context pour l'intent
     private Context mContext;
+    //
     int REQUEST_FOR_ACTIVITY_CODE = 100;
 
     public MyNeighbourRecyclerViewAdapter(Context context, List<Neighbour> items) {

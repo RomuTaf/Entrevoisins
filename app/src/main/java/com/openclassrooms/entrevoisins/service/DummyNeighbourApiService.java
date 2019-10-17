@@ -43,13 +43,15 @@ public class DummyNeighbourApiService implements  NeighbourApiService {
      * {@inheritDoc}
      */
     @Override
+    // Get the favorites list
+
     public List<Neighbour> getFavorites() {
 
         for (int  i=0 ; i< neighbours.size(); i++ ){
 
             Neighbour neighbour = getNeighbours().get(i);
 
-            if (neighbour.isFavorite()){
+            if (neighbour.isFavorite() && !favorites.contains (neighbour)){
 
                 favorites.add(neighbour);
             }
@@ -63,8 +65,10 @@ public class DummyNeighbourApiService implements  NeighbourApiService {
 
 
 
-    @SuppressLint("WrongConstant")
+
     @Override
+    // add a favorite
+
     public void addFavorite(Neighbour neighbour) {
 
         //Log.e ("Appel", "id: " + neighbour.getId () );
@@ -74,8 +78,8 @@ public class DummyNeighbourApiService implements  NeighbourApiService {
 
             if (neighbour.getId () == neighbours.get(i).getId ()){
 
-                neighbours.get (i).setFavorite (true);
-                //neighbours.get (i).setFavorite (!neighbours.get (i).isFavorite ());
+               //neighbours.get (i).setFavorite (true);
+                neighbours.get (i).setFavorite (!neighbours.get (i).isFavorite ());
 
             }
 
@@ -83,31 +87,6 @@ public class DummyNeighbourApiService implements  NeighbourApiService {
     }
 
 
-
- /**   @Override
-    public List<Neighbour> getFavoritesNeighbour() {
-
-        for (int  i=0 ; i< neighbours.size(); i++ ){
-
-            Neighbour neighbour = getNeighbours().get(i);
-            if ( neighbour.isFavorite()==true)
-            {
-                favoritesNeighbours.add(neighbour);
-            }
-
-        }
-        return favoritesNeighbours;
-    }
-
-    @Override
-    public void addFavoritesNeighbour(Neighbour neighbour) {
-
-        if (!favoritesNeighbours.contains(neighbour)) {
-            favoritesNeighbours.add(neighbour);
-        }
-
-    }
-**/
 
 
 }

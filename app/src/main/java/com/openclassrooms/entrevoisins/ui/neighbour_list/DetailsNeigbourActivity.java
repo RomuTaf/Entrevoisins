@@ -80,13 +80,16 @@ public class DetailsNeigbourActivity extends AppCompatActivity {
         fab.setOnClickListener (new View.OnClickListener () {
             @Override
             public void onClick(View view) {
-               // mApiService.addFavorite (Neighbour);
+              // mApiService.addFavorite (neighbour);
 
-                //if(neighbour.getIsfavorite () ? neighbour.setIsfavorite (false) : neighbour.setIsfavorite (true));
+               // if(neighbour.isFavorite () ? neighbour.setFavorite (false) : neighbour.setIsfavorite (true));
 
                 neighbour.setFavorite (!neighbour.isFavorite ());
 
-                //neighbour.setFavorite(true);
+
+
+                    //neighbour.setFavorite (true);
+
 
 
                 Log.e ("onActivityResult", "id: " + neighbour.isFavorite () );
@@ -100,18 +103,7 @@ Intent resultIntent = new Intent();
             }
         });
 
-         // recevoir les infos passes depuis le recyclerview
 
-//        Intent intent = getIntent();
-//        String id  = intent.getStringExtra ("id");
-//        String avatar = intent.getStringExtra("avatar");
-//        String name = intent.getStringExtra("name");
-//
-//        // verification
-//
-//        Log.d ("TAG", "onCreate: "+ id);
-//        Log.d ("TAG", "onCreate: "+ avatar);
-//        Log.d ("TAG", "onCreate: "+ name);
 
 
         //afficher le nom de la personne dans le collapsingToolbarLayout
