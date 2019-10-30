@@ -8,20 +8,13 @@ import com.openclassrooms.entrevoisins.model.Neighbour;
 import java.util.ArrayList;
 import java.util.List;
 
-import static android.support.constraint.Constraints.TAG;
-
 /**
  * Dummy mock for the Api
  */
 public class DummyNeighbourApiService implements  NeighbourApiService {
 
-
-
-
-
     private List<Neighbour> neighbours = DummyNeighbourGenerator.generateNeighbours();
     private List<Neighbour> favorites = new ArrayList<> ();
-
 
     /**
      * {@inheritDoc}
@@ -55,38 +48,20 @@ public class DummyNeighbourApiService implements  NeighbourApiService {
 
                 favorites.add(neighbour);
             }
-
         }
-
 
         return favorites;
     }
 
-
-
-
-
     @Override
     // add a favorite
+    public void addFavorite(int position ) {
+        neighbours.get (position).setFavorite (true);
 
-    public void addFavorite(Neighbour neighbour) {
-
-        //Log.e ("Appel", "id: " + neighbour.getId () );
-
-
-        for (int  i=0 ; i< neighbours.size(); i++ ){
-
-            if (neighbour.getId () == neighbours.get(i).getId ()){
-
-               //neighbours.get (i).setFavorite (true);
-                neighbours.get (i).setFavorite (!neighbours.get (i).isFavorite ());
-
-            }
-
-        }
     }
 
-
-
+    @Override
+   public void deleteFavorite(Neighbour favorite) {
+        favorites.remove(favorite); }
 
 }

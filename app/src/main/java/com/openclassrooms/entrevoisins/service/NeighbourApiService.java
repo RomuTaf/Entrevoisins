@@ -30,8 +30,10 @@ public interface NeighbourApiService {
     List<Neighbour> getFavorites();
 
 
-
     /** Add Favorite **/
+    void addFavorite (int position);
 
-    void addFavorite (Neighbour neighbour);
+
+     /** Deletes a favorite*/
+    void deleteFavorite(Neighbour favorite);
 }

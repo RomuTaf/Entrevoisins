@@ -96,13 +96,14 @@ public class NeighbourFragment extends Fragment {
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult (requestCode, resultCode, data);
 
-        Log.d ("Code", "onActivityResult: " +requestCode);
+       // Log.d ("Code", "onActivityResult: " +requestCode);
             if (resultCode == Activity.RESULT_OK) {
                 // TODO Extract the data returned from the child Activity.
 
-                Neighbour returnNeighbour = data.getParcelableExtra ("neighbour");
+             //   Neighbour returnNeighbour = data.getParcelableExtra ("neighbour");
+                int position = data.getExtras ().getInt ("position");
 
-                mApiService.addFavorite (returnNeighbour);
+                mApiService.addFavorite (position);
 
             }
 

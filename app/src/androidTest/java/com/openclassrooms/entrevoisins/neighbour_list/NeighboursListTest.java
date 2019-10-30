@@ -42,7 +42,6 @@ import static org.hamcrest.core.IsNull.notNullValue;
  */
 @RunWith(AndroidJUnit4.class)
 public class NeighboursListTest {
-
     // This is fixed
     private static int ITEMS_COUNT = 12;
 
@@ -116,6 +115,9 @@ public class NeighboursListTest {
             //click on the first neighbour to show detail
             onView(withId(R.id.list_neighbours))
                     .perform(actionOnItemAtPosition(i, click()));
+            //Then : go to page details
+            onView(withId(R.id.details))
+                    .check(matches(isDisplayed()));
             //click on the fab button to add it to favorite
             onView(withId(R.id.fab)).perform(click());
             //return back

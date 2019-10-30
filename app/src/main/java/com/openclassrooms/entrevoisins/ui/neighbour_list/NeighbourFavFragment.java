@@ -87,9 +87,9 @@ public class NeighbourFavFragment extends Fragment {
      * @param event
      */
     @Subscribe
-    public void onDeleteNeighbour(DeleteNeighbourEvent event) {
-        mApiService.deleteNeighbour(event.neighbour);
-        //initList();
+    public void onDeleteFavorite(DeleteNeighbourEvent event) {
+        mApiService.deleteFavorite (event.neighbour);
+        initList();
     }
 
     private boolean _hasLoadedOnce = false; // your boolean field

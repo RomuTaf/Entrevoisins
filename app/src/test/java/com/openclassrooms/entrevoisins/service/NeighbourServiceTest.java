@@ -57,8 +57,17 @@ public class NeighbourServiceTest {
     public void AddFavoriteWithSuccess() {
        service.getFavorites().clear ();
        Neighbour neighbourFav = service.getNeighbours ().get (0);
-       service.addFavorite (neighbourFav);
+       service.addFavorite (0);
        assertTrue (service.getFavorites ().contains(neighbourFav));
 
       }
+
+   @Test
+    public void deleteFavoriteWithSuccess() {
+       Neighbour favoriteToDelete = service.getNeighbours ().get (0);
+       service.addFavorite (favoriteToDelete.getId ());
+       service.deleteFavorite(favoriteToDelete);
+       assertFalse (service.getFavorites ().contains(favoriteToDelete));
+    }
+
 }

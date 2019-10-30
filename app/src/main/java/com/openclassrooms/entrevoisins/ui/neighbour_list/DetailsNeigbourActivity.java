@@ -2,6 +2,8 @@ package com.openclassrooms.entrevoisins.ui.neighbour_list;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.CollapsingToolbarLayout;
@@ -29,6 +31,9 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
+import static android.graphics.Color.RED;
+import static android.graphics.Color.YELLOW;
+
 public class DetailsNeigbourActivity extends AppCompatActivity {
 
     @BindView(R.id.toolbar)
@@ -44,10 +49,8 @@ public class DetailsNeigbourActivity extends AppCompatActivity {
 
 
     private NeighbourApiService mApiService;
-    //private List<Neighbour> mNeighbours = new Neighbour ();
     Neighbour neighbour;
-
-
+    int position;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,11 +58,12 @@ public class DetailsNeigbourActivity extends AppCompatActivity {
         setContentView (R.layout.activity_scrolling);
         ButterKnife.bind(this);
 
+        //Récupération des détails d'un voisin
         Intent intent = getIntent();
         neighbour = intent.getParcelableExtra ("data");
+        position = intent.getExtras().getInt ("position");
 
-
-        Log.e ("FavoriteInit", "Fav: " + neighbour.isFavorite () );
+        //Log.e ("FavoriteInit", "Fav: " + neighbour.isFavorite () );
 
         //la flêche de retour
         setSupportActionBar(toolbar);
@@ -74,36 +78,24 @@ public class DetailsNeigbourActivity extends AppCompatActivity {
             }
         });
 
-
-
         //pour ajouter a la liste des favoris
         fab.setOnClickListener (new View.OnClickListener () {
             @Override
             public void onClick(View view) {
-              // mApiService.addFavorite (neighbour);
-
-               // if(neighbour.isFavorite () ? neighbour.setFavorite (false) : neighbour.setIsfavorite (true));
 
                 neighbour.setFavorite (!neighbour.isFavorite ());
 
+               // Log.e ("onActivityResult", "id: " + neighbour.isFavorite () );
 
-
-                    //neighbour.setFavorite (true);
-
-
-
-                Log.e ("onActivityResult", "id: " + neighbour.isFavorite () );
-
-Intent resultIntent = new Intent();
-// TODO Add extras or a data URI to this intent as appropriate.
-                resultIntent.putExtra("neighbour", neighbour);
+                Intent resultIntent = new Intent();
+                // TODO Add extras or a data URI to this intent as appropriate.
+               // resultIntent.putExtra("neighbour", neighbour);
+                resultIntent.putExtra("position", position);
                 setResult(Activity.RESULT_OK, resultIntent);
                 finish();
 
             }
         });
-
-
 
 
         //afficher le nom de la personne dans le collapsingToolbarLayout
@@ -118,10 +110,10 @@ Intent resultIntent = new Intent();
 
     }
 
-    @Override
+   /** @Override
     public void onBackPressed() {
         super.onBackPressed ();
 
 
-    }
+    }**/
 }
